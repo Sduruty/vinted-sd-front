@@ -1,1 +1,91 @@
 /* Other rules */
+:root {
+  --grey-light: #b2b2b2;
+  --grey-standard: #666666;
+  --grey-dark: #333333;
+  --turquoise: #37aeb7;
+  --framboise: #c2175b;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--grey-standard);
+  font-family: "Roboto Condensed", sans-serif;
+}
+.container {
+  width: 80%;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.margin-top-58 {
+  margin-top: 58px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+h2 {
+  color: black;
+  font-size: 26px;
+  text-align: center;
+  margin: 15px 0 25px;
+}
+button {
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  color: #ffffff;
+  font-family: "Roboto Condensed", sans-serif;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+.btn-small {
+  padding: 4px 20px;
+  font-size: 13px;
+  min-width: 110px;
+}
+.btn-inverted {
+  background-color: #ffffff;
+  color: var(--turquoise);
+}
+/* HEADER */
+header {
+  margin-top: 58px; /* hauteur nav */
+  height: 65vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+/* SIGNUP - LOGIN */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  margin: 0 auto;
+}
+
+form input {
+  margin: 10px 0;
+}
+
+/* COMPONENT DISPLAY USER */
+.display-user {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.display-user img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
