@@ -1,76 +1,68 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Button from "../components/Shared/Button";
+import { Link, useHistory } from "react-router-dom";
+
 const Login = ({ setUser }) => {
-  let history = useHistory();
-  const [userEmail, setUEmail] = useState("");
-  const [userPass, setUPass] = useState("");
-
-  const handleUEmailChange = (event) => {
-    const value = event.target.value;
-    setUEmail(value);
-  };
-
-  const handleUPassChange = (event) => {
-    const value = event.target.value;
-    setUPass(value);
-  };
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
+    //avoid refresh
+    event.preventDefault();
     try {
-      event.preventDefault();
-      if (userEmail && userPass) {
-        // axios POST request
-        const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/login",
-          {
-            email: userEmail,
-            password: userPass,
-          }
-        );
-        //check if in DB
-
-        if (response.data.token) {
-          setUser(response.data.token);
-          console.log(response.data.token);
-          history.push("/");
+      const response = await axios.post(
+        // I use Reacteur's API for now because I fucked mine...
+        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        {
+          email: email,
+          password: password,
         }
-      } else {
-        alert("All fiels must be filled !");
-      }
+      );
+      //transfers token to app.js in order to check if user already signed in
+      setUser(response.data.token);
+      history.push("/"); //if yes, redirect to "/"
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
+
   return (
-    <main className="margin-top-58">
-      <div className="container">
-        <Link to="/home">Go back home</Link>
-        <h2>Se connecter</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="Email"
-            value={userEmail}
-            onChange={handleUEmailChange}
-          />
-          <br />
-          <input
-            type="password"
-            name="userPass"
-            placeholder="Mot de passe"
-            value={userPass}
-            onChange={handleUPassChange}
-          />
-          <br />
-          {/*NOT FUNCTIONAL YET */}
-          <Button text="Se connecter" type="submit" />
-        </form>
-      </div>
-    </main>
+    <section className="login">
+      <h2>Se connecter</h2>
+      <form onSubmit={handleSubmit}>
+        {/*EMAIL FIELD */}
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+        <hr />
+        {/*PASSWORD FIELD */}
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
+        />
+        <hr />
+
+        <input />
+        <button type="submit">Se connecter</button>
+        <Link to="/signup">
+          <p className="connect">Pas encore de compte ? Inscris-toi !</p>
+        </Link>
+      </form>
+    </section>
   );
 };
 

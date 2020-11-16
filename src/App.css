@@ -1,91 +1,531 @@
-/* Other rules */
-:root {
-  --grey-light: #b2b2b2;
-  --grey-standard: #666666;
-  --grey-dark: #333333;
-  --turquoise: #37aeb7;
-  --framboise: #c2175b;
-}
+/* GENERAL */
+
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  line-height: 22px;
-  color: var(--grey-standard);
-  font-family: "Roboto Condensed", sans-serif;
-}
-.container {
-  width: 80%;
-  max-width: 1170px;
-  margin: 0 auto;
-  padding: 20px 0;
-}
-.margin-top-58 {
-  margin-top: 58px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
   text-decoration: none;
-  color: inherit;
 }
-h2 {
-  color: black;
-  font-size: 26px;
-  text-align: center;
-  margin: 15px 0 25px;
+
+.container {
+  width: 80%;
+  margin: 0 auto;
 }
-button {
-  border: 1px solid var(--turquoise);
-  background-color: var(--turquoise);
-  color: #ffffff;
-  font-family: "Roboto Condensed", sans-serif;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  outline: none;
-}
-.btn-small {
-  padding: 4px 20px;
-  font-size: 13px;
-  min-width: 110px;
-}
-.btn-inverted {
-  background-color: #ffffff;
-  color: var(--turquoise);
-}
+
 /* HEADER */
-header {
-  margin-top: 58px; /* hauteur nav */
-  height: 65vh;
-  min-height: 400px;
+
+header .container {
+  position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-/* SIGNUP - LOGIN */
-form {
+header {
+  box-sizing: border-box;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 52px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header input {
+  border: none;
+  width: 590px;
+  height: 36px;
+  padding-left: 50px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #f5f6f7;
+  cursor: pointer;
+}
+
+header .inputLogo {
+  position: absolute;
+  color: #bebebe;
+}
+
+header i {
+  cursor: pointer;
+  margin: 13px;
+}
+
+header img {
+  width: 76px;
+  height: 30px;
+}
+
+header button {
+  outline: none;
+  font-family: inherit;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 5px;
+  cursor:pointer
+}
+
+header button:nth-child(1) {
+  padding: 5px 20px;
+}
+
+header button:nth-child(1),
+header button:nth-child(2) {
+  color: #2db0ba;
+  background-color: white;
+  border: 1px solid #2db0ba;
+  margin: 0 14px;
+}
+
+header button.sellProduct {
+  color: white;
+  background-color: #2db0ba;
+  border: 1px solid #2db0ba;
+  margin: 0 30px;
+}
+
+header button:nth-child(1):hover,
+header button:nth-child(2):hover {
+  color: white;
+  background-color: #2db0ba;
+  border: 1px solid #2db0ba;
+}
+
+header button.sellProduct:hover {
+  color: #2db0ba;
+  background-color: white;
+  border: 1px solid #2db0ba;
+}
+
+/*  STAR */
+
+.star {
+  position: relative;
+  background-image: url("assets/img/star.jpg");
+  height: 455px;
+  width: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom:25px;
+}
+
+.star h1 {
+  font-size: 34px;
+  line-height: 42.5px;
+  margin-bottom: 40px;
+}
+
+.star > div {
+  box-sizing: border-box;
+  padding: 38px 60px 30px 34px;
+  position: absolute;
+  top: 96px;
+  left: 140px;
+  width: 400px;
+  height: 257px;
+  background-color: #fff;
+  border-radius:5px;
+}
+
+.star button {
+  border-style: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #0ab0ba;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.star p:hover {
+  text-decoration: underline;
+}
+
+.star .destroyEffect {
+  width: 80%;
+  height: auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/*  FILTER NAV BAR  */
+select{
+  margin-right:10px;
+}
+.FilterNavOptions {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.FilterNavOptions :hover{
+  cursor:pointer;
+  background-color:#0CB0BA;
+  color:white;
+}
+.FilterNavOptions span {
+  margin-left: 20px;
+  color: #0ab0ba;
+}
+
+.FilterNavOptions span:hover {
+  
+  cursor: pointer;
+}
+
+/* ITEMS  */
+
+.items-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom:25px;
+}
+
+.item {
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 20px;
+}
+
+.item p.price {
+  font-size: 14px;
+  color: black;
+}
+
+.userInfos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item .userInfos img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.itemPict img {
+  margin: 10px 0;
+  width: 235px;
+  height: 360px;
+  object-fit: cover;
+}
+
+/*  OFFER */
+
+.offerContainer,
+.publish {
+  background-color: #ebedee;
+}
+
+.offerContainer img {
+  margin-top: 30px;
+  width: 400px;
+  height: 604px;
+  object-fit: cover;
+  object-position: top;
+}
+
+div.offerContainer > div.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.productInfos {
+  box-sizing: border-box;
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-content: space-around;
+  background-color: white;
+  width: 400px;
+  height: 604px;
+  padding: 30px;
+}
+
+.productInfos h2 {
+  font-size: 24px;
+}
+
+.productInfos {
+  text-transform: uppercase;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  margin: 10px 0;
+  background-color: #ebedee;
+}
+
+.subProductInfos {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.subProductInfos .col-1 {
+  color: #acacac;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.subProductInfos .col-2 {
+  color: #666666;
+  font-weight: bold;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.subProductInfos .col-1 > div,
+.subProductInfos .col-2 > div {
+  margin: 4px 0;
+}
+
+p.description {
+  font-size: 16px;
+  text-transform: none;
+  word-break: break-word;
+}
+
+.subProductInfos2 p.userInfos {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.subProductInfos2 p:nth-child(1) {
+  font-weight: bold;
+}
+
+.subProductInfos2 p {
+  text-transform: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.subProductInfos2 p:not(:nth-child(1)) {
+  color: #666666;
+}
+
+.subProductInfos2 p:nth-child(3) {
+  color: black;
+}
+
+.subProductInfos2 img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  margin-top: 0;
+}
+
+.productInfos button {
+  border-style: none;
+  outline: none;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #0ab0ba;
+  color: white;
+  padding: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*  SIGN UP  AND LOGIN */
+
+.signup,
+.login {
   width: 275px;
   margin: 0 auto;
 }
 
-form input {
-  margin: 10px 0;
+.signup h2,
+.login h2 {
+  margin: 50px 0 20px 0;
+  font-size: 24px;
+  text-align: center;
 }
 
-/* COMPONENT DISPLAY USER */
-.display-user {
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  color: black;
+.signup input,
+.login input {
+  margin-top: 20px;
+  border-style: none;
+  font-family: inherit;
+  font-size: inherit;
 }
-.display-user img {
-  height: 50px;
-  width: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
+.signup input::placeholder,
+.login input::placeholder {
+  color: lightgrey;
+}
+
+.signup hr,
+.login hr {
+  background-color: #fcced3;
+  border: 0 none;
+  height: 1px;
+}
+
+.signup label {
+  margin-left: 15px;
+  color: #666666;
+  margin-bottom: 6px;
+}
+
+.signup .bigCheckbox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.signup input.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.signup p.tc {
+  color: #acacac;
+  padding: 10px;
+  line-height: 16px;
+  font-size: 12px;
+}
+
+.signup button {
+  outline: none;
+  border-style: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #2db0ba;
+  color: white;
+  width: 275px;
+  height: 44px;
+  margin-top: 33px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup p.connect,
+.login p.connect {
+  color: #2cb1ba;
+  font-size: 12px;
+  margin: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.login button {
+  outline: none;
+  border-style: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #2db0ba;
+  color: white;
+  width: 275px;
+  height: 44px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*  PAGINATION */
+
+div.buttonPagination {
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+.pagination {
+  outline: none;
+  border: 1px solid #09b1ba;
+  background-color: #09b1ba;
+  color: white;
+  margin: 0 2px;
+  padding: 2px 10px 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.paginationFocus {
+  outline: none;
+  background-color: white;
+  border: 1px solid #09b1ba;
+  color: #09b1ba;
+  margin: 0 2px;
+  padding: 2px 10px 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*  PUBLISHING  PAGE*/
+
+.publish h2 {
+  padding: 50px 0 8px 0;
+  font-size: 24px;
+}
+
+.publish section:nth-child(1) input {
+  margin: 100px auto;
+}
+
+.publish section {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border: 1px solid #c1c2c3;
+  margin-top: 16px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.publish section div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 30px;
+  background-color: #dddddd;
+  padding: 20px;
+  text-align: center;
+}
+
+footer strong {
+  font-weight: bold;
+}
+
+footer span {
+  font-weight: bold;
+  color:#0CB0BA;
 }
