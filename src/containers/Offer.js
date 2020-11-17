@@ -1,4 +1,4 @@
-import React, { useState, usedestroyEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const Offer = () => {
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  usedestroyEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(

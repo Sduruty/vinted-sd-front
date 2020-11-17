@@ -21,12 +21,12 @@ const Login = ({ setUser }) => {
       );
       //transfers token to app.js in order to check if user already signed in
       setUser(response.data.token);
-      history.push("/"); //if yes, redirect to "/"
+      history.push("/publish"); //if yes, redirect to "/publish"
     } catch (error) {
       console.log(error.response);
     }
   };
-
+//LOGIN FORM
   return (
     <section className="login">
       <h2>Se connecter</h2>

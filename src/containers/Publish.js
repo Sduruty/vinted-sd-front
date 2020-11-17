@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {useHistory, Redirect}from "react-router-dom";
 
 const Publish = ({ token }) => {
+
+  const history=useHistory();
+
   const [file, setFile] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -37,6 +41,7 @@ const Publish = ({ token }) => {
           },
         }
       );
+      history.push(`/offer/${response.data._id}`);
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
@@ -227,7 +232,7 @@ const Publish = ({ token }) => {
       </div>
     </div>
   ) : (
-    <div>pas authorisé</div>
+    <Redirect push to="/login"/>
   );
 };
 

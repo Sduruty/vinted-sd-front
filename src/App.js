@@ -11,6 +11,7 @@ import Offer from "./containers/Offer";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 
 //LIBRARY
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -52,6 +53,10 @@ function App() {
 
           <Route path="/publish">
             <Publish setUser={setUser} />
+          </Route>
+
+          <Route path="/payment">
+            <Payment setUser={setUser} />
           </Route>
 
           <Route path="/signup">
