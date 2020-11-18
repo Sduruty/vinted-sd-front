@@ -40,7 +40,7 @@ const CheckoutForm = ({ name, price }) => {
         <div className="payment">
           {/*check back for CSS $$$$$$$ */}
           <form onSubmit={handleSubmit}>
-            <h2>Félicitations, vous vous êtes délesté de {price} euros</h2>
+            <h2>Attention, vous allez être délesté de {price} euros</h2>
             <CardElement />
             <button type="submit">Payer et pleurer</button>
           </form>

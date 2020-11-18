@@ -14,7 +14,7 @@ const Payment = () => {
   return location.state ? (
     <div className="container">
       <div className="payment-container">
-        <span>Payment page</span>
+        
         <Elements stripe={stripePromise}>
           <CheckoutForm
             name={location.state.name}
