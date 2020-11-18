@@ -1,55 +1,54 @@
-import React, {useState} from 'react';
-import {useStripe, useElements, CardElement} from 
-"@stripe/react-stripe-js";
+import React, { useState } from "react";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
 import axios from "axios";
+//COMPONENTS
+import Recap from "../components/Recap";
 
-const CheckoutForm = () => {
-const [succeed, setSucceed]= useState(false);
-const stripe = useStripe();
-const elements = useElements();
+const CheckoutForm = ({name,price}) => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [succeed, setSucceed] = useState(false);
+  
 
-//avoid refresh
-const handleSubmit=async(event)=>{
+  const handleSubmit = async (event) => {//avoid refresh
     event.preventDefault();
-
-    try{//Stripe catches user bank data
-const cardElement=elements.getElement(CardElement);
-
-//ask for creating token through Stripes API
-const stripeResponse=await stripe.createToken(cardElement,{
-    name:"username",
-});
-//console.log(stripeResponse);
-const stripeToken=stripeResponse.token.id;
-//request
-const response=await axios.post("https://lereacteur-vinted-api.herokuapp.com/payment",{stripeToken : stripeToken,});
-
-//checks if token matches and sets state
-if(response.data.status === "succeeded"){
-    setSucceed(true);
-}
-
-    }catch(error)
-    {console.log(error.message);}
+//Stripes get bank data
+    const cardElement = elements.getElement(CardElement);
+    //Sending data to Stripe
+    const stripeResponse = await stripe.createToken(cardElement,{
+      name:"XX",
+    });
+    const stripeToken = stripeResponse.token.id;
+    //make request
+    const response = await axios.post(
+      "https://lereacteur-vinted-api.herokuapp.com/payment",
+      {
+        token: stripeToken,
+        title: name,
+        amount: price,
+      }
+    );
+  
+  //console.log(response.data);
+  if (response.data.status === "succeeded"){setSucceed(true);}
+   }; 
+   return (
+      <div>
+        {/*if everything is ok*/}
+        {succeed ? (
+          <div>
+            <form onSubmit={handleSubmit}>
+              <h2>Félicitations, vous vous êtes délesté de {price} euros</h2>
+              <CardElement />
+              <button type="submit">Payer et pleurer</button>
+            </form>
+          </div>
+        ) : (
+          <Recap />
+        )}
+      </div>
+    );
 };
 
-
-    return (
-        <div>
-            {/*if everything is ok*/}
-            {succeed ?(
-                <p>Bravo, vous êtes délesté de votre richesse !</p>
-            ):(
-<form onSubmit={handleSubmit}>
-    <CardElement/>
-    <button type="submit">Valider et Pleurer</button>
-</form>
-
-
-            )}
-        </div>
-    )
-}
-
-export default CheckoutForm
+export default CheckoutForm;

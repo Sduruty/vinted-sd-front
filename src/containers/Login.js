@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Login = ({ setUser }) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage]= useState("");//helps find out what's wrong as it gives a more specific message
+  const location =useLocation();
+//REDIRECTION
+let fromPublish;
+if(location.state){
+  fromPublish=true;
+}else{fromPublish=false;}
 
   const handleSubmit = async (event) => {
     //avoid refresh
@@ -20,16 +27,26 @@ const Login = ({ setUser }) => {
         }
       );
       //transfers token to app.js in order to check if user already signed in
-      setUser(response.data.token);
-      history.push("/publish"); //if yes, redirect to "/publish"
+      if(response.data.token){
+setUser(response.data.token);
+//if logged in redirect to publish page, if not redirect to home
+history.push(fromPublish ? "/publish" : "/");
+      }else{
+        alert("shit happened...")
+      }
+      
+      
     } catch (error) {
-      console.log(error.response);
+      if(error.response && error.response.data){
+        setMessage("Wrong password and/or email provided. Please fill in the form correctly")
+      }
     }
   };
 //LOGIN FORM
   return (
     <section className="login">
       <h2>Se connecter</h2>
+  <div>{message}</div>
       <form onSubmit={handleSubmit}>
         {/*EMAIL FIELD */}
         <input

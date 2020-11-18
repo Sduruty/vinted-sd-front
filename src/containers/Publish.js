@@ -29,7 +29,7 @@ const Publish = ({ token }) => {
   formData.append("price", price);
 
   const handleSubmit = async (event) => {
-    try {
+    try {//avoid refresh
       event.preventDefault();
 
       const response = await axios.post(
@@ -37,7 +37,8 @@ const Publish = ({ token }) => {
         formData,
         {
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",//means it's a form data
           },
         }
       );
@@ -54,6 +55,9 @@ const Publish = ({ token }) => {
         <h2>Vends ton item</h2>
         <form onSubmit={handleSubmit}>
           <section>
+          <div className="pictureFile">
+              <label htmlFor="offerPicture">+</label>
+              <label htmlFor="offerPicture">Ajouter une photo</label>
             <input
               type="file"
               id="offerPicture"
@@ -62,9 +66,10 @@ const Publish = ({ token }) => {
                 setFile(event.target.files[0]);
               }}
             />
+            </div>
           </section>
           <section>
-            <item>
+            <article>
               <div className="col-1">
                 <span>Titre</span>
               </div>
@@ -80,11 +85,11 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
+            </article>
             <hr />
-            <item>
+            <article>
               <div className="col-1">
-                <span>Ex: porté quelques fois, taille correctement</span>
+                <span>Ex: porté quelques fois, taille correctement...</span>
               </div>
               <div className="col-2">
                 <textarea
@@ -93,16 +98,16 @@ const Publish = ({ token }) => {
                   cols="30"
                   rows="10"
                   value={description}
-                  placeholder="ex: proté quelques fois, taille correctement"
+                  placeholder="ex: porté quelques fois, taille correctement"
                   onChange={(event) => {
                     setDescription(event.target.value);
                   }}
                 ></textarea>
               </div>
-            </item>
+            </article>
           </section>
           <section>
-            <item>
+            <article>
               <div className="col-1">
                 <span>Marque</span>
               </div>
@@ -118,9 +123,9 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
+            </article>
             <hr />
-            <item>
+            <article>
               <div className="col-1">
                 <span>Taille</span>
               </div>
@@ -136,9 +141,9 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
+            </article>
             <hr />
-            <item>
+            <article>
               <div className="col-1">
                 <span>Couleur</span>
               </div>
@@ -154,9 +159,9 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
+            </article>
             <hr />
-            <item>
+            <article>
               <div className="col-1">
                 <span>Etat</span>
               </div>
@@ -172,8 +177,8 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
-            <item>
+            </article>
+            <article>
               <div className="col-1">
                 <span>Lieu</span>
               </div>
@@ -189,11 +194,11 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
+            </article>
           </section>
 
           <section>
-            <item>
+            <article>
               <div className="col-1">
                 <span>Prix</span>
               </div>
@@ -208,8 +213,8 @@ const Publish = ({ token }) => {
                   }}
                 />
               </div>
-            </item>
-            <item>
+            </article>
+            <article>
               <div className="col-1"></div>
               <div className="col-2">
                 <input
@@ -224,7 +229,7 @@ const Publish = ({ token }) => {
                   Je suis intéressé(e) par les échanges
                 </label>
               </div>
-            </item>
+            </article>
           </section>
 
           <button type="submit">Ajouter</button>
@@ -232,7 +237,7 @@ const Publish = ({ token }) => {
       </div>
     </div>
   ) : (
-    <Redirect push to="/login"/>
+    <Redirect to={{ pathname: "/login", state: { fromPublish: true } }} />
   );
 };
 

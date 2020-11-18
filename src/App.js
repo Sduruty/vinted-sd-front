@@ -16,18 +16,20 @@ import Payment from "./containers/Payment";
 //LIBRARY
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+//other icons needed?
 library.add(faSearch);
 
 function App() {
   const [search, setSearch] = useState("");
 
   let cookie = Cookie.get("userToken");
+  //sets state to null if there's no token in cookie
   const [token, setToken] = useState(cookie || null);
   // console.log(token);
 
   const setUser = (tokenToSet) => {
     if (tokenToSet) {
-      //if tokenToSet is already known
+      //create cookie
       Cookie.set("userToken", tokenToSet);
       setToken(tokenToSet);
     } else {

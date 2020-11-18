@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const Offer = () => {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,7 @@ const Offer = () => {
   return (
     <>
       {isLoading ? (
-        <p>Chargement en cours, Merci de bien vouloir patienter</p>
+        <p>Chargement en cours, Merci de bien vouloir patienter</p>//adding a loader would be cool
       ) : (
         <>
           <div className="offerContainer ">
@@ -65,7 +66,11 @@ const Offer = () => {
                     <span>{product.owner.account.username}</span>
                   </p>
                 </section>
-                <button>acheter</button>
+                <Link to ={{pathname:"/payment", state:{price:product.product_price,
+                  name: product.product_name,}
+                  
+                }}>
+                <button >acheter</button></Link>
               </section>
             </div>
           </div>
