@@ -7,7 +7,7 @@ const Offers = ({ items }) => {
       {items.map((item, index) => {
         return (
           <Link key={index} to={`/offer/${item._id}`}>
-            <item className="item">
+            <article className="item">
               <div className="userInfos">
                 <img
                   src={
@@ -24,7 +24,7 @@ const Offers = ({ items }) => {
               <p className="price">{item.product_price} €</p>
               <p>{item.product_details[1].TAILLE}</p>
               <p>{item.product_details[0].MARQUE}</p>
-            </item>
+            </article>
           </Link>
         );
       })}

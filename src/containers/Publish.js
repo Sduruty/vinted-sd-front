@@ -43,7 +43,7 @@ const Publish = ({ token }) => {
         }
       );
       history.push(`/offer/${response.data._id}`);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -54,7 +54,7 @@ const Publish = ({ token }) => {
       <div className="container">
         <h2>Vends ton item</h2>
         <form onSubmit={handleSubmit}>
-          <section>
+          <section>{/*ADD ITEM PICTURE */}
           <div className="pictureFile">
               <label htmlFor="offerPicture">+</label>
               <label htmlFor="offerPicture">Ajouter une photo</label>
@@ -68,7 +68,7 @@ const Publish = ({ token }) => {
             />
             </div>
           </section>
-          <section>
+          <section>{/*ADD ITEM NAME */}
             <article>
               <div className="col-1">
                 <span>Titre</span>
@@ -87,7 +87,7 @@ const Publish = ({ token }) => {
               </div>
             </article>
             <hr />
-            <article>
+            <article>{/*ADD ITEM DESCRIPTION */}
               <div className="col-1">
                 <span>Ex: porté quelques fois, taille correctement...</span>
               </div>
@@ -106,7 +106,7 @@ const Publish = ({ token }) => {
               </div>
             </article>
           </section>
-          <section>
+          <section>{/*ADD ITEM BRAND */}
             <article>
               <div className="col-1">
                 <span>Marque</span>
@@ -125,7 +125,7 @@ const Publish = ({ token }) => {
               </div>
             </article>
             <hr />
-            <article>
+            <article>{/*ADD ITEM SIZING */}
               <div className="col-1">
                 <span>Taille</span>
               </div>
@@ -143,7 +143,7 @@ const Publish = ({ token }) => {
               </div>
             </article>
             <hr />
-            <article>
+            <article>{/*ADD ITEM COLOR */}
               <div className="col-1">
                 <span>Couleur</span>
               </div>
@@ -161,7 +161,7 @@ const Publish = ({ token }) => {
               </div>
             </article>
             <hr />
-            <article>
+            <article>{/*ADD ITEM CONDITION */}
               <div className="col-1">
                 <span>Etat</span>
               </div>
@@ -178,7 +178,7 @@ const Publish = ({ token }) => {
                 />
               </div>
             </article>
-            <article>
+            <article>{/*ADD ITEM LOCATION */}
               <div className="col-1">
                 <span>Lieu</span>
               </div>
@@ -198,7 +198,7 @@ const Publish = ({ token }) => {
           </section>
 
           <section>
-            <article>
+            <article>{/*ADD ITEM PRICE */}
               <div className="col-1">
                 <span>Prix</span>
               </div>
@@ -214,7 +214,7 @@ const Publish = ({ token }) => {
                 />
               </div>
             </article>
-            <article>
+            <article>{/*exchange checkbox */}
               <div className="col-1"></div>
               <div className="col-2">
                 <input

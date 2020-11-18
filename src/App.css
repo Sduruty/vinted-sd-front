@@ -25,7 +25,7 @@ header .container {
 header {
   box-sizing: border-box;
   background-color: #fff;
-  position: sticky; /*means it won't move*/
+  position: sticky; /*means it won't go away at scroll*/
   top: 0;
   z-index: 2;
   height: 52px;
@@ -67,7 +67,7 @@ header button {
   font-size: 12px;
   border-radius: 5px;
   padding: 5px;
-  cursor:pointer
+  cursor: pointer;
 }
 
 header button:nth-child(1) {
@@ -112,7 +112,7 @@ header button.sellProduct:hover {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom:25px;
+  margin-bottom: 25px;
 }
 
 .star h1 {
@@ -130,7 +130,7 @@ header button.sellProduct:hover {
   width: 400px;
   height: 257px;
   background-color: #fff;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 .star button {
@@ -146,13 +146,12 @@ header button.sellProduct:hover {
   cursor: pointer;
 }
 
-
-
 .star p:hover {
   text-decoration: underline;
 }
 
-.star .destroyEffect {/*kind of filter added on picture*/
+.star .destroyEffect {
+  /*kind of filter added on picture*/
   width: 80%;
   height: auto;
   position: absolute;
@@ -161,19 +160,18 @@ header button.sellProduct:hover {
 }
 
 /*  FILTER NAV BAR  */
-select{
-  margin-right:10px;
+select {
+  margin-right: 10px;
 }
 .FilterNavOptions {
   display: flex;
   justify-content: flex-end;
-  
 }
 
-.FilterNavOptions :hover{
-  cursor:pointer;
-  background-color:#0CB0BA;
-  color:white;
+.FilterNavOptions :hover {
+  cursor: pointer;
+  background-color: #0cb0ba;
+  color: white;
 }
 .FilterNavOptions span {
   margin-left: 20px;
@@ -181,7 +179,6 @@ select{
 }
 
 .FilterNavOptions span:hover {
-  
   cursor: pointer;
 }
 
@@ -193,7 +190,7 @@ select{
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-bottom:25px;
+  margin-bottom: 25px;
 }
 
 .item {
@@ -226,6 +223,8 @@ select{
   width: 235px;
   height: 360px;
   object-fit: cover;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 /*  OFFER */
@@ -358,6 +357,9 @@ p.description {
   padding: 10px 0;
   border-radius: 5px;
   cursor: pointer;
+  width:150px;
+  
+  align-content: center;
 }
 
 /*  SIGN UP  AND LOGIN */
@@ -535,10 +537,13 @@ div.buttonPagination {
 }
 
 /*PAYMENT PAGE*/
-.payment-container{
-  width:25%;
-  margin:25px;
-  background-color:red;
+.payment-container {
+  width: 25%;
+  margin: 25px;
+  background-color: red;
+}
+.payment {
+  border: black 2px dashed;
 }
 /* FOOTER */
 
@@ -555,5 +560,5 @@ footer strong {
 
 footer span {
   font-weight: bold;
-  color:#0CB0BA;
+  color: #0cb0ba;
 }

@@ -40,6 +40,7 @@ history.push(fromPublish ? "/publish" : "/");
       if(error.response && error.response.data){
         setMessage("Wrong password and/or email provided. Please fill in the form correctly")
       }
+      console.log(error.message);
     }
   };
 //LOGIN FORM
